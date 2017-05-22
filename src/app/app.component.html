@@ -1,4 +1,6 @@
-<h1>
-  {{title}}
-</h1>
+<!-- 这里用数组[]是因为可以传递参数 -->
+<!-- 加/代表根路由,不是子路由 -->
+<a [routerLink]="['/']">主页</a>
+<a [routerLink]="['/product']">商品详情</a>
 <router-outlet></router-outlet>
+<!-- 路由目标组件,显示在router-outlet后面 -->
