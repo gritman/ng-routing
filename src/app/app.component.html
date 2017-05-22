@@ -2,5 +2,7 @@
 <!-- 加/代表根路由,不是子路由 -->
 <a [routerLink]="['/']">主页</a>
 <a [routerLink]="['/product']">商品详情</a>
+<!-- (click)表示事件绑定,说明这个事件由控制器的toProductDetails()方法来处理 -->
+<input type="button" value="商品详情" (click)="toProductDetails()">
 <router-outlet></router-outlet>
 <!-- 路由目标组件,显示在router-outlet后面 -->
