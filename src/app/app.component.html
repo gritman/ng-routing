@@ -1,7 +1,7 @@
 <!-- 这里用数组[]是因为可以传递参数 -->
 <!-- 加/代表根路由,不是子路由 -->
 <a [routerLink]="['/']">主页</a>
-<a [routerLink]="['/product']" [queryParams]="{id: 1}">商品详情</a>
+<a [routerLink]="['/product', 1]">商品详情</a>
 <!-- (click)表示事件绑定,说明这个事件由控制器的toProductDetails()方法来处理 -->
 <input type="button" value="商品详情" (click)="toProductDetails()">
 <router-outlet></router-outlet>

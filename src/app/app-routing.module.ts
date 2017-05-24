@@ -10,7 +10,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'product', // 这是根路由,不是子路由
+    path: 'product/:id', // 这是根路由,不是子路由
     component: ProductComponent
   },
   {
