@@ -4,3 +4,9 @@
 <p>
   商品ID是: {{productId}}
 </p>
+<p>商品描述</p>
+<p>销售员信息</p>
+<!-- 必须用./才是子路由 -->
+<a [routerLink]="['./']">商品描述</a>
+<a [routerLink]="['./seller', 99]">销售员信息</a>
+<router-outlet></router-outlet>
