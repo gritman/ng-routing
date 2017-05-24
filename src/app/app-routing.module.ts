@@ -6,7 +6,12 @@ import { Code404Component } from './code404/code404.component';
 
 const routes: Routes = [
   {
-    path: '', // 注意path不能以/开头
+    path: '', // 把默认路由重定向到home
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home', // 注意path不能以/开头
     component: HomeComponent
   },
   {
