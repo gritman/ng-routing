@@ -5,12 +5,18 @@ import { ProductComponent } from './product/product.component';
 import { ProductDescComponent } from './product-desc/product-desc.component';
 import { SellerInfoComponent } from './seller-info/seller-info.component';
 import { Code404Component } from './code404/code404.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   {
     path: '', // 把默认路由重定向到home
     redirectTo: '/home',
     pathMatch: 'full'
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
+    outlet: 'aux' // 辅助路由,这个路由的目标组件,会显示在aux插座上,其他路由显示在没名字的插座上
   },
   {
     path: 'home', // 注意path不能以/开头

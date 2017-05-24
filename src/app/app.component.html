@@ -4,5 +4,8 @@
 <a [routerLink]="['/product', 1]">商品详情</a>
 <!-- (click)表示事件绑定,说明这个事件由控制器的toProductDetails()方法来处理 -->
 <input type="button" value="商品详情" (click)="toProductDetails()">
+<a [routerLink]="[{outlets: {aux: 'chat'}}]">开始聊天</a>
+<a [routerLink]="[{outlets: {aux: null}}]">结束聊天</a>
 <router-outlet></router-outlet>
 <!-- 路由目标组件,显示在router-outlet后面 -->
+<router-outlet name="aux"></router-outlet>
