@@ -15,6 +15,6 @@ export class AppComponent {
   }
 
   toProductDetails() {
-    this.router.navigate(['/product']);
+    this.router.navigate(['/product', 2]);
   }
 }
