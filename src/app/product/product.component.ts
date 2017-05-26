@@ -9,6 +9,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 export class ProductComponent implements OnInit {
 
   private productId: number;
+  private productName: string;
 
   constructor(private routeInfo: ActivatedRoute) {
   }
@@ -22,6 +23,19 @@ export class ProductComponent implements OnInit {
     // 因为这种情况下,组件只创建一次
     //// this.productId = this.routeInfo.snapshot.params['id'];
 
+    this.routeInfo.data.subscribe(
+      (data: {product: Product}) => {
+        this.productId = data.product.id;
+        this.productName = data.product.name;
+      }
+    );
   }
 
+}
+
+// 用于路由守卫resolve
+export class Product {
+  constructor(public id: number, public name: string) {
+
+  }
 }

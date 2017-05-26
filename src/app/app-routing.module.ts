@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ProductComponent } from './product/product.component';
-import { ProductDescComponent } from './product-desc/product-desc.component';
-import { SellerInfoComponent } from './seller-info/seller-info.component';
-import { Code404Component } from './code404/code404.component';
-import { ChatComponent } from './chat/chat.component';
-import { LoginGuard } from './guard/login.guard';
-import {UnsavedGuard} from "./guard/unsave.guard";
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {ProductComponent} from './product/product.component';
+import {ProductDescComponent} from './product-desc/product-desc.component';
+import {SellerInfoComponent} from './seller-info/seller-info.component';
+import {Code404Component} from './code404/code404.component';
+import {ChatComponent} from './chat/chat.component';
+import {LoginGuard} from './guard/login.guard';
+import {UnsavedGuard} from './guard/unsave.guard';
+import {ProductResolve} from './guard/product.resolve';
 
 const routes: Routes = [
   {
@@ -42,7 +43,10 @@ const routes: Routes = [
     ],
     canDeactivate: [
       UnsavedGuard // 离开守卫同进入守卫,可以有多个,必须都为true,否则不能离开
-    ]
+    ],
+    resolve: {
+      product: ProductResolve
+    }
   },
   {
     path: '**', // 路由表是按先后顺序匹配的,所以通配路由必须放在最后面
@@ -53,6 +57,8 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [LoginGuard, UnsavedGuard] // 通过依赖注入来实例化LoginGuard,要在这里声明
+  // 通过依赖注入来实例化LoginGuard,要在这里声明
+  providers: [LoginGuard, UnsavedGuard, ProductResolve]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
