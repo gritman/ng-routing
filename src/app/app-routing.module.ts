@@ -7,6 +7,7 @@ import { SellerInfoComponent } from './seller-info/seller-info.component';
 import { Code404Component } from './code404/code404.component';
 import { ChatComponent } from './chat/chat.component';
 import { LoginGuard } from './guard/login.guard';
+import {UnsavedGuard} from "./guard/unsave.guard";
 
 const routes: Routes = [
   {
@@ -38,6 +39,9 @@ const routes: Routes = [
     ],
     canActivate: [ // 设置路由守卫,可以设置多个,会被依次调用,如果有一个返回false,则不能进入该路由
       LoginGuard
+    ],
+    canDeactivate: [
+      UnsavedGuard // 离开守卫同进入守卫,可以有多个,必须都为true,否则不能离开
     ]
   },
   {
@@ -49,6 +53,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [LoginGuard] // 通过依赖注入来实例化LoginGuard,要在这里声明
+  providers: [LoginGuard, UnsavedGuard] // 通过依赖注入来实例化LoginGuard,要在这里声明
 })
 export class AppRoutingModule { }
